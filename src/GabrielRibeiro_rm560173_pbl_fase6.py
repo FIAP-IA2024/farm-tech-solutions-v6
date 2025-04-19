@@ -104,14 +104,35 @@ def generate_dataset_config(data_path):
     Returns:
         str: Path to the generated YAML config file
     """
-    # Get absolute paths
-    abs_data_path = os.path.abspath(data_path)
+    # Get the project root directory (parent directory of the data_path)
+    project_root = os.path.abspath(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    
+    # Convert relative data_path to absolute if needed
+    if not os.path.isabs(data_path):
+        abs_data_path = os.path.normpath(os.path.join(project_root, data_path))
+    else:
+        abs_data_path = os.path.normpath(data_path)
+    
+    # Ensure the path exists
+    if not os.path.exists(abs_data_path):
+        logging.error(f"Data path {abs_data_path} does not exist.")
+        raise FileNotFoundError(f"Data path {abs_data_path} does not exist.")
+    
+    # Define absolute paths for train, val, and test directories
+    train_path = os.path.normpath(os.path.join(abs_data_path, "train", "images"))
+    val_path = os.path.normpath(os.path.join(abs_data_path, "val", "images"))
+    test_path = os.path.normpath(os.path.join(abs_data_path, "test", "images"))
+    
+    # Verify that all required directories exist
+    for path, name in [(train_path, "train"), (val_path, "validation"), (test_path, "test")]:
+        if not os.path.exists(path):
+            logging.warning(f"{name.capitalize()} images directory {path} does not exist.")
 
     dataset_config = {
         "path": abs_data_path,
-        "train": os.path.join(abs_data_path, "train/images"),
-        "val": os.path.join(abs_data_path, "val/images"),
-        "test": os.path.join(abs_data_path, "test/images"),
+        "train": train_path,
+        "val": val_path,
+        "test": test_path,
         "nc": 2,  # Number of classes
         "names": ["Object_A", "Object_B"],  # Class names
     }
@@ -121,6 +142,11 @@ def generate_dataset_config(data_path):
         yaml.dump(dataset_config, f, default_flow_style=False)
 
     logging.info(f"Dataset configuration generated at {config_path}")
+    logging.info(f"Using the following paths:\n"
+               f"  - Data path: {abs_data_path}\n"
+               f"  - Train images: {train_path}\n"
+               f"  - Validation images: {val_path}\n"
+               f"  - Test images: {test_path}")
 
     return str(config_path)
 
