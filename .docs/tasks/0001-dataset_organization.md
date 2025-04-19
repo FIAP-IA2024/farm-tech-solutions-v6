@@ -20,4 +20,4 @@ Organize a dataset with a minimum of 40 images of Object A and 40 images of Obje
 
 ## Status
 
-- [ ] Completed
+- [x] Completed
