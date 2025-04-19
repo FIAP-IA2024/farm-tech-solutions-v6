@@ -37,4 +37,4 @@ Split the collected dataset into training, validation, and testing sets for both
 
 ## Status
 
-- [ ] Completed
+- [x] Completed
