@@ -40,7 +40,6 @@ data/
 - Task 2 (dataset splitting) completed.
 - Task 3 (image labeling) completed.
 - Task 4 (standalone Python script) completed.
-- Tasks have been reorganized to include a standalone Python script task before the Jupyter notebook setup.
 
 ### Completed Tasks
 
