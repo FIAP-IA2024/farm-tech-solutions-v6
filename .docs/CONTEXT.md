@@ -68,7 +68,6 @@ data/
 - Execution has been successfully done locally with the Python script before migrating to Google Colab.
 - The standalone Python script implements YOLO model training, validation, and testing with flexible command-line arguments.
 - YOLOv5 repository is automatically set up and configured by the script.
-- The original `CONTEXT.md` file was renamed to `PROJECT.md`.
 - Standalone Python script must be named `GabrielRibeiro_rm560173_pbl_fase6.py` to maintain consistency with the Jupyter notebook name.
 
 ### Last Updated
