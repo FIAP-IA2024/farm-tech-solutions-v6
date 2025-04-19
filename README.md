@@ -11,7 +11,6 @@
 - RM559800 - [Jonas Felipe dos Santos Lima](https://www.linkedin.com/in/jonas-felipe-dos-santos-lima-b2346811b/)
 - RM560173 - [Gabriel Ribeiro](https://www.linkedin.com/in/ribeirogab/)
 - RM559926 - [Marcos Trazzini](https://www.linkedin.com/in/mstrazzini/)
-- RM560461 - [Jose Antonio Correa Junior](https://www.linkedin.com/in/jacorrea/)
 - RM559645 - [Edimilson Ribeiro](https://www.linkedin.com/in/edimilson-ribeiro/)
 
 ## 👩‍🏫 Professores
