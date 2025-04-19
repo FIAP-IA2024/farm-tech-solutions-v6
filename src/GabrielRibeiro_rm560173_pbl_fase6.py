@@ -106,7 +106,7 @@ def generate_dataset_config(data_path):
     """
     # Get absolute paths
     abs_data_path = os.path.abspath(data_path)
-    
+
     dataset_config = {
         "path": abs_data_path,
         "train": os.path.join(abs_data_path, "train/images"),
@@ -144,17 +144,21 @@ def train_model(
         dict: Training results and paths
     """
     cwd = os.getcwd()
-    os.chdir(yolov5_path)
 
-    # Convert paths to absolute
+    # Convert paths to absolute before changing directory
     abs_config_path = os.path.abspath(config_path)
     abs_save_dir = os.path.abspath(save_dir)
-    
+    abs_weights = weights if os.path.isabs(weights) else os.path.join(cwd, weights)
+
+    # Change to YOLOv5 directory
+    os.chdir(yolov5_path)
+
     run_name = (
         f"train_e{epochs}_bs{batch_size}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     )
+
     train_cmd = f"python train.py --img {img_size} --batch {batch_size} --epochs {epochs} \
-               --data {abs_config_path} --weights {weights} --project {abs_save_dir} --name {run_name}"
+               --data {abs_config_path} --weights {abs_weights} --project {abs_save_dir} --name {run_name}"
 
     logging.info(
         f"Starting training with {epochs} epochs and batch size {batch_size}..."
@@ -163,6 +167,7 @@ def train_model(
 
     os.system(train_cmd)
 
+    # Return to original directory
     os.chdir(cwd)
 
     results_path = os.path.join(abs_save_dir, run_name)
@@ -195,13 +200,15 @@ def validate_model(
         dict: Validation results
     """
     cwd = os.getcwd()
-    os.chdir(yolov5_path)
 
-    # Convert paths to absolute
+    # Convert paths to absolute before changing directory
     abs_config_path = os.path.abspath(config_path)
     abs_best_weights = os.path.abspath(best_weights)
     abs_save_dir = os.path.abspath(save_dir)
-    
+
+    # Change to YOLOv5 directory
+    os.chdir(yolov5_path)
+
     run_name = (
         f"val_{Path(best_weights).stem}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     )
@@ -213,6 +220,7 @@ def validate_model(
 
     os.system(val_cmd)
 
+    # Return to original directory
     os.chdir(cwd)
 
     results_path = os.path.join(abs_save_dir, run_name)
@@ -221,9 +229,7 @@ def validate_model(
     return {"run_name": run_name, "results_path": results_path}
 
 
-def test_model(
-    yolov5_path, config_path, best_weights, img_size, batch_size, save_dir
-):
+def test_model(yolov5_path, config_path, best_weights, img_size, batch_size, save_dir):
     """
     Test the trained model on the test set.
 
@@ -239,19 +245,22 @@ def test_model(
         dict: Test results
     """
     cwd = os.getcwd()
-    os.chdir(yolov5_path)
 
-    # Convert paths to absolute
+    # Convert paths to absolute before changing directory
     abs_config_path = os.path.abspath(config_path)
     abs_best_weights = os.path.abspath(best_weights)
     abs_save_dir = os.path.abspath(save_dir)
 
-    run_name = (
-        f"test_best_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-    )
-    
-    # Use detect.py instead of val.py for testing on individual images
-    test_cmd = f"python detect.py --img {img_size} --source ../data/test/images/ \
+    # Path to test images relative to YOLOv5 directory
+    abs_test_images = os.path.join(os.path.dirname(abs_config_path), "test/images")
+
+    # Change to YOLOv5 directory
+    os.chdir(yolov5_path)
+
+    run_name = f"test_best_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+
+    # Use absolute path to test images instead of relative path
+    test_cmd = f"python detect.py --img {img_size} --source {abs_test_images} \
               --weights {abs_best_weights} --project {abs_save_dir} --name {run_name} --save-txt --save-conf"
 
     logging.info(f"Starting testing with weights {best_weights}...")
@@ -259,6 +268,7 @@ def test_model(
 
     os.system(test_cmd)
 
+    # Return to original directory
     os.chdir(cwd)
 
     results_path = os.path.join(abs_save_dir, run_name)
@@ -286,83 +296,93 @@ def compare_models(yolov5_path, config_path, img_size, batch_size, weights, save
     Returns:
         dict: Comparison results
     """
-    logging.info("Starting model comparison with different epoch settings...")
+    cwd = os.getcwd()
+
+    # Convert paths to absolute before changing directory
+    abs_config_path = os.path.abspath(config_path)
+    abs_save_dir = os.path.abspath(save_dir)
+    abs_weights = weights if os.path.isabs(weights) else os.path.join(cwd, weights)
+
+    comparison_dir = os.path.join(abs_save_dir, "comparison")
+    os.makedirs(comparison_dir, exist_ok=True)
 
     # Train with 30 epochs
     logging.info("Training model with 30 epochs...")
-    results_30 = train_model(
-        yolov5_path, config_path, 30, batch_size, img_size, weights, save_dir
-    )
-    val_30 = validate_model(
+    train_30_results = train_model(
         yolov5_path,
-        config_path,
-        results_30["best_weights"],
-        img_size,
+        abs_config_path,
+        30,
         batch_size,
-        save_dir,
-    )
-    test_30 = test_model(
-        yolov5_path,
-        config_path,
-        results_30["best_weights"],
         img_size,
-        batch_size,
-        save_dir,
+        abs_weights,
+        comparison_dir,
     )
 
     # Train with 60 epochs
     logging.info("Training model with 60 epochs...")
-    results_60 = train_model(
-        yolov5_path, config_path, 60, batch_size, img_size, weights, save_dir
-    )
-    val_60 = validate_model(
+    train_60_results = train_model(
         yolov5_path,
-        config_path,
-        results_60["best_weights"],
+        abs_config_path,
+        60,
+        batch_size,
+        img_size,
+        abs_weights,
+        comparison_dir,
+    )
+
+    # Validate both models
+    val_30_results = validate_model(
+        yolov5_path,
+        abs_config_path,
+        train_30_results["best_weights"],
         img_size,
         batch_size,
-        save_dir,
+        comparison_dir,
     )
-    test_60 = test_model(
+    val_60_results = validate_model(
         yolov5_path,
-        config_path,
-        results_60["best_weights"],
+        abs_config_path,
+        train_60_results["best_weights"],
         img_size,
         batch_size,
-        save_dir,
+        comparison_dir,
     )
 
-    # Generate comparison report
-    comparison_path = os.path.join(save_dir, "model_comparison.md")
-    with open(comparison_path, "w") as f:
-        f.write("# Model Comparison: 30 vs 60 Epochs\n\n")
-        f.write("## Training Results\n\n")
-        f.write(f"- 30 Epochs: {results_30['results_path']}\n")
-        f.write(f"- 60 Epochs: {results_60['results_path']}\n\n")
+    # Create comparison report
+    report_path = os.path.join(comparison_dir, "comparison_report.md")
+    with open(report_path, "w") as f:
+        f.write("# YOLO Model Training Comparison Report\n\n")
+        f.write(f"**Date:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
 
-        f.write("## Validation Results\n\n")
-        f.write(f"- 30 Epochs: {val_30['results_path']}\n")
-        f.write(f"- 60 Epochs: {val_60['results_path']}\n\n")
+        f.write("## 30 Epochs Model\n\n")
+        f.write(f"- Training results: {train_30_results['results_path']}\n")
+        f.write(f"- Validation results: {val_30_results['results_path']}\n")
+        f.write(f"- Best weights: {train_30_results['best_weights']}\n\n")
 
-        f.write("## Test Results\n\n")
-        f.write(f"- 30 Epochs: {test_30['results_path']}\n")
-        f.write(f"- 60 Epochs: {test_60['results_path']}\n\n")
+        f.write("## 60 Epochs Model\n\n")
+        f.write(f"- Training results: {train_60_results['results_path']}\n")
+        f.write(f"- Validation results: {val_60_results['results_path']}\n")
+        f.write(f"- Best weights: {train_60_results['best_weights']}\n\n")
 
-        f.write("## Conclusion\n\n")
+        f.write("## Comparison Analysis\n\n")
         f.write(
-            "Please analyze the results and metrics from both models to determine which one performs better.\n"
+            "For a detailed comparison of metrics, please refer to the validation results directories.\n\n"
+        )
+        f.write(
+            "Generally, more epochs may lead to better model performance, but there is a risk of overfitting.\n"
+        )
+        f.write(
+            "The comparison helps determine the optimal number of epochs for this specific dataset.\n"
         )
 
-    logging.info(f"Comparison report generated at {comparison_path}")
+    logging.info(f"Comparison report generated at {report_path}")
 
     return {
-        "comparison_report": comparison_path,
-        "results_30": results_30,
-        "results_60": results_60,
-        "val_30": val_30,
-        "val_60": val_60,
-        "test_30": test_30,
-        "test_60": test_60,
+        "train_30": train_30_results,
+        "train_60": train_60_results,
+        "val_30": val_30_results,
+        "val_60": val_60_results,
+        "report_path": report_path,
     }
 
 

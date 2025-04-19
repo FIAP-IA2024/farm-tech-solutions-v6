@@ -25,9 +25,6 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-yolov5/
-results/
-data.yml
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -178,3 +175,8 @@ cython_debug/
 
 # Mac OS X specific files
 .DS_Store
+
+# YOLOv5
+yolov5*
+results/*
+!results/.gitkeep
