@@ -1,6 +1,0 @@
-train: ./src/train
-val: ./src/val
-test: ./src/test
-
-nc: 2
-names: ['A', 'B']
