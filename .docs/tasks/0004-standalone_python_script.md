@@ -30,13 +30,13 @@ Develop a standalone Python script that implements the YOLO model training, vali
 3. Ensure the script can run from the command line with appropriate output:
 
    ```bash
-   python src/GabrielRibeiro_rm560173_pbl_fase6.py --epochs 30 --batch-size 16
+   python notebooks/GabrielRibeiro_rm560173_pbl_fase6.py --epochs 30 --batch-size 16
    ```
 
 4. Make the script executable (if on Linux/Mac):
 
    ```bash
-   chmod +x src/GabrielRibeiro_rm560173_pbl_fase6.py
+   chmod +x notebooks/GabrielRibeiro_rm560173_pbl_fase6.py
    ```
 
 5. Test the script with different parameters to ensure it works correctly
