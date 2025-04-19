@@ -27,4 +27,4 @@ Label all images in the training and validation sets using Make Sense IA. This s
 
 ## Status
 
-- [ ] Completed
+- [x] Completed

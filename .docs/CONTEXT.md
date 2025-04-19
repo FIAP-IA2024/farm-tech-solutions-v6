@@ -38,11 +38,13 @@ data/
 - Task structure created in `/docs/tasks`.
 - Task 1 (dataset organization) completed.
 - Task 2 (dataset splitting) completed.
+- Task 3 (image labeling) completed.
 
 ### Completed Tasks
 
 - 0001-dataset_organization.md
 - 0002-dataset_splitting.md
+- 0003-image_labeling.md
 
 ### Important Notes
 
@@ -51,4 +53,4 @@ data/
 
 ### Last Updated
 
-2025-04-19T18:01:55-03:00
+2025-04-19T18:04:23-03:00
