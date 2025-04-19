@@ -180,3 +180,4 @@ cython_debug/
 yolov5*
 results/*
 !results/.gitkeep
+data/dataset.yaml
