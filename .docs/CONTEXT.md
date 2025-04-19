@@ -39,6 +39,7 @@ data/
 - Task 1 (dataset organization) completed.
 - Task 2 (dataset splitting) completed.
 - Task 3 (image labeling) completed.
+- Tasks have been reorganized to include a standalone Python script task before the Jupyter notebook setup.
 
 ### Completed Tasks
 
@@ -46,11 +47,26 @@ data/
 - 0002-dataset_splitting.md
 - 0003-image_labeling.md
 
+### Task Sequence
+
+1. Dataset Organization
+2. Dataset Splitting
+3. Image Labeling
+4. Standalone Python Script Development
+5. Jupyter Notebook Setup
+6. YOLO Model Training
+7. Multiple Epoch Training
+8. Results Analysis
+9. Model Testing
+10. GitHub Documentation
+11. Demonstration Video
+
 ### Important Notes
 
-- Execution is being done locally before migrating to Google Colab.
+- Execution is being done locally with the Python script before migrating to Google Colab.
 - The original `CONTEXT.md` file was renamed to `PROJECT.md`.
+- Standalone Python script must be named `GabrielRibeiro_rm560173_pbl_fase6.py` to maintain consistency with the Jupyter notebook name.
 
 ### Last Updated
 
-2025-04-19T18:04:23-03:00
+2025-04-19T18:13:33-03:00
