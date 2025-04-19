@@ -61,4 +61,4 @@ Develop a standalone Python script that implements the YOLO model training, vali
 
 ## Status
 
-- [ ] Completed
+- [x] Completed
