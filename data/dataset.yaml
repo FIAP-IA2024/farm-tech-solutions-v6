@@ -1,8 +1,0 @@
-names:
-- Object_A
-- Object_B
-nc: 2
-path: /Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/data
-test: /Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/data/test/images
-train: /Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/data/train/images
-val: /Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/data/val/images
