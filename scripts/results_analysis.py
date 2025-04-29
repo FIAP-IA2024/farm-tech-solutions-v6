@@ -69,6 +69,8 @@ def load_results_csv(filepath):
     """Load and parse results.csv file from YOLO training"""
     try:
         df = pd.read_csv(filepath)
+        # Strip whitespace from column names
+        df.columns = df.columns.str.strip()
         return df
     except Exception as e:
         print(f"Error loading results file {filepath}: {e}")
