@@ -46,7 +46,9 @@
 ## 3. Implementação e Treinamento (60 segundos)
 
 **Fala:**
-"Para implementar a solução, desenvolvi um script Python que utiliza o modelo YOLOv5. Este script realiza o download e configuração do repositório YOLOv5, prepara o ambiente de treinamento, e executa o treinamento do modelo com os parâmetros definidos. Realizei dois treinamentos com diferentes configurações: um com 30 épocas e outro com 60 épocas, ambos com batch size de 16."
+"Para implementar a solução, desenvolvi um script Python que utiliza o modelo YOLOv5. Este script realiza o download e configuração do repositório YOLOv5, prepara o ambiente de treinamento, e executa o treinamento do modelo com os parâmetros definidos. Realizei dois treinamentos com diferentes configurações: um com 30 épocas e outro com 60 épocas, ambos com batch size de 16.
+
+Para facilitar a comparação, o script possui uma opção `--compare` que automaticamente treina os dois modelos (30 e 60 épocas) e gera um relatório comparativo, possibilitando uma análise direta dos resultados."
 
 **Mostrar na tela:**
 
@@ -54,8 +56,9 @@
 - `farm-tech-solutions-v6/notebooks/GabrielRibeiro_rm560173_pbl_fase6.py`
 - Notebook Jupyter
 - `farm-tech-solutions-v6/notebooks/GabrielRibeiro_rm560173_pbl_fase6.ipynb`
-- Comando de execução do script
-- `python scripts/GabrielRibeiro_rm560173_pbl_fase6.py --epochs 30 --batch-size 16`
+- Comandos de execução do script:
+- `python notebooks/GabrielRibeiro_rm560173_pbl_fase6.py --epochs 30 --batch-size 16`
+- `python notebooks/GabrielRibeiro_rm560173_pbl_fase6.py --compare`
 
 ---
 

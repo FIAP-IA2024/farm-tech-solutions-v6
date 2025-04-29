@@ -154,7 +154,13 @@ farm-tech-solutions-v6/
 Para treinar o modelo YOLO:
 
 ```bash
-python scripts/GabrielRibeiro_rm560173_pbl_fase6.py --epochs 30 --batch-size 16
+python notebooks/GabrielRibeiro_rm560173_pbl_fase6.py --epochs 30 --batch-size 16
+```
+
+Para executar automaticamente o treinamento comparativo entre modelos com 30 e 60 épocas:
+
+```bash
+python notebooks/GabrielRibeiro_rm560173_pbl_fase6.py --compare
 ```
 
 Para executar a análise de resultados:
