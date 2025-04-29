@@ -43,6 +43,7 @@ data/
 - Task 6 (YOLO model training) completed.
 - Task 7 (multiple epoch training) completed.
 - Task 8 (results analysis) completed.
+- Task 9 (model testing) completed.
 
 ### Completed Tasks
 
@@ -53,6 +54,7 @@ data/
 - 0006-yolo_model_training.md
 - 0007-multiple_epoch_training.md
 - 0008-results_analysis.md
+- 0009-model_testing.md
 
 ### Task Sequence
 
@@ -64,7 +66,7 @@ data/
 6. YOLO Model Training ✓
 7. Multiple Epoch Training ✓
 8. Results Analysis ✓
-9. Model Testing
+9. Model Testing ✓
 10. GitHub Documentation
 11. Demonstration Video
 
@@ -74,7 +76,8 @@ data/
 - The standalone Python script implements YOLO model training, validation, and testing with flexible command-line arguments.
 - YOLOv5 repository is automatically set up and configured by the script.
 - Standalone Python script must be named `GabrielRibeiro_rm560173_pbl_fase6.py` to maintain consistency with the Jupyter notebook name.
+- Detailed comparison between models trained for 30 and 60 epochs was performed, with the 30-epoch model showing better performance overall.
 
 ### Last Updated
 
-2025-04-29T12:30:00-03:00
+2025-04-30T14:15:00-03:00

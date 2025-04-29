@@ -28,4 +28,4 @@ Test the trained YOLO model on the test dataset to evaluate its real-world perfo
 
 ## Status
 
-- [ ] Completed
+- [x] Completed
