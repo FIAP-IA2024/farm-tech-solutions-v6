@@ -19,34 +19,28 @@
 ## 1. Contextualização do Projeto (30 segundos)
 
 **Fala:**
-"Neste projeto, desenvolvemos um sistema de visão computacional utilizando o modelo YOLO para detectar dois objetos distintos: gatos e cachorros. A solução demonstra o potencial e a acurácia desta tecnologia através de treinamentos com diferentes configurações."
+"Um contexto geral sobre o projeto: Desenvolvemos um sistema de visão computacional utilizando o modelo YOLO para detectar dois objetos distintos: escolhemos gatos como objeto A e cachorros como objeto B."
 
-**Mostrar na tela:**
+**Fala:**
+"Aqui um exemplo de uma imagem de gato, e uma imagem de cachorro:"
 
-- Seção "Entregas do Projeto" do README
-- Destacar as informações sobre a Entrega 1
+**Mostrar na tela:** Exemplo de foto de gato e exemplo de foto de cachorro
 
 ---
 
 ## 2. Estrutura do Dataset (45 segundos)
 
 **Fala:**
-"Para treinar o modelo, organizei um dataset contendo 80 imagens, sendo 40 de gatos e 40 de cachorros. Estas imagens foram distribuídas da seguinte forma: 80% para treinamento, 10% para validação e 10% para testes, mantendo o equilíbrio entre as classes. Todas as imagens foram rotuladas utilizando a ferramenta Make Sense IA."
+"Para treinar o modelo, organizamos um dataset contendo 80 imagens, sendo 40 de gatos e 40 de cachorros, o nome de arquivo das images de gato começam com o prefixo A e as de cachorro começam com prefixo B. Estas imagens foram distribuídas da seguinte forma: 80% para treinamento, 10% para validação e 10% para testes. Todas as imagens foram rotuladas utilizando a ferramenta Make Sense IA."
 
-**Mostrar na tela:**
-
-- Estrutura de pastas do dataset
-- `farm-tech-solutions-v6/data`
-- Arquivo de configuração do dataset
-- `farm-tech-solutions-v6/data/dataset.yaml`
-- Algumas imagens de exemplo de cada categoria com suas anotações
+**Mostrar na tela:** Pasta `data` e as imagens
 
 ---
 
 ## 3. Implementação e Treinamento (60 segundos)
 
 **Fala:**
-"Para implementar a solução, desenvolvi um script Python que utiliza o modelo YOLOv5. Este script realiza o download e configuração do repositório YOLOv5, prepara o ambiente de treinamento, e executa o treinamento do modelo com os parâmetros definidos. Realizei dois treinamentos com diferentes configurações: um com 30 épocas e outro com 60 épocas, ambos com batch size de 16.
+"Para implementar a solução, desenvolvemos um script Python que utiliza o modelo YOLOv5. Este script realiza o download e configuração do repositório YOLOv5, prepara o ambiente de treinamento, e executa o treinamento do modelo com os parâmetros definidos. Realizamos dois treinamentos com diferentes configurações: um com 30 épocas e outro com 60 épocas, ambos com batch size de 16.
 
 Para facilitar a comparação, o script possui uma opção `--compare` que automaticamente treina os dois modelos (30 e 60 épocas) e gera um relatório comparativo, possibilitando uma análise direta dos resultados."
 
@@ -64,9 +58,6 @@ Para facilitar a comparação, o script possui uma opção `--compare` que autom
 
 ## 4. Análise de Resultados (75 segundos)
 
-**Fala:**
-"Após o treinamento, realizei uma análise comparativa detalhada entre os modelos treinados com 30 e 60 épocas. Os resultados mostraram que o modelo com 30 épocas teve um desempenho significativamente melhor, com um mAP@0.5 de 0,21 contra 0,12 do modelo com 60 épocas. A precisão do modelo de 30 épocas foi de 0,28, superior aos 0,10 do modelo com 60 épocas. Observei que o treinamento estendido até 60 épocas resultou em overfitting, onde o modelo se especializou demais nos dados de treinamento, perdendo capacidade de generalização."
-
 **Mostrar na tela:**
 
 - Resultados da análise comparativa
@@ -75,40 +66,28 @@ Para facilitar a comparação, o script possui uma opção `--compare` que autom
 - `farm-tech-solutions-v6/results/comparison/analysis_output/` (gráficos relevantes)
 - Matrizes de confusão dos dois modelos
 
----
-
-## 5. Demonstração do Modelo em Ação (45 segundos)
-
 **Fala:**
-"Agora, vou mostrar o modelo em ação. Utilizando o modelo treinado com 30 épocas, realizei testes em imagens que não foram utilizadas durante o treinamento. Como podemos observar, o modelo é capaz de detectar e classificar corretamente os objetos, demonstrando sua eficácia na tarefa de visão computacional."
-
-**Mostrar na tela:**
-
-- Execução do script de teste
-- Exemplos de imagens processadas pelo modelo
-- `farm-tech-solutions-v6/results/comparison/val_best_20250429_112355/` (resultados de validação)
+"Após o treinamento, realizamos uma análise comparativa detalhada entre os modelos treinados com 30 e 60 épocas. Os resultados mostraram que o modelo com 30 épocas teve um desempenho significativamente melhor, com um mAP@0.5 de 0,21 contra 0,12 do modelo com 60 épocas. A precisão do modelo de 30 épocas foi de 0,28, superior aos 0,10 do modelo com 60 épocas. Observamos que o treinamento estendido até 60 épocas resultou em overfitting, onde o modelo se especializou demais nos dados de treinamento, perdendo capacidade de generalização."
 
 ---
 
-## 6. Conclusões e Recomendações (30 segundos)
+## 5. Demonstração do Resultados dos Modelos (45 segundos)
+
+**Mostrar na tela:** Mostrar os arquivos gerados
 
 **Fala:**
-"Com base nos resultados obtidos, concluímos que o modelo treinado com 30 épocas apresenta o melhor desempenho para esta aplicação. Recomendamos a implementação de técnicas de aumento de dados e regularização para melhorar ainda mais a robustez do modelo em trabalhos futuros. Além disso, a implementação de parada antecipada baseada em métricas de validação pode otimizar o tempo de treinamento."
+"Agora vou mostrar os arquivos gerados no treinamento dos modelos. Aqui temos os relatórios de análise, gráficos de comparação entre os modelos treinados, e as matrizes de confusão. Esses arquivos foram produzidos automaticamente após a execução dos scripts e ajudam a documentar e visualizar os resultados obtidos de forma clara e organizada."
 
-**Mostrar na tela:**
+---
 
-- Recomendações baseadas na análise de resultados
-- Seção de conclusões do relatório
+## 6. Conclusões (30 segundos)
+
+**Fala:**
+“Com base nos resultados, o modelo treinado com 30 épocas apresentou o melhor desempenho para a proposta da aplicação. O script Python e o notebook utilizados estão disponíveis na pasta notebooks, e a pasta scripts contém o script responsável por gerar o relatório comparativo entre os dois modelos.”
 
 ---
 
 ## 7. Encerramento (30 segundos)
 
 **Fala:**
-"Este projeto demonstra o potencial da visão computacional utilizando o modelo YOLO para detecção de objetos. Os resultados obtidos mostram que é possível obter bons desempenhos mesmo com conjuntos de dados relativamente pequenos, desde que o treinamento seja realizado de forma adequada. Todo o código e documentação estão disponíveis no repositório GitHub do nosso grupo. Obrigado pela atenção!"
-
-**Mostrar na tela:**
-
-- Página do GitHub do projeto
-- `farm-tech-solutions-v6/README.md`
-- Destaque para as tecnologias utilizadas
+“Essa foi a apresentação do projeto Despertar da Rede Neural, desenvolvido na Fase 6 do curso de Inteligência Artificial da FIAP. Muito obrigado pela atenção!”
