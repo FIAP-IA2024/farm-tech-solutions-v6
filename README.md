@@ -77,6 +77,7 @@ Neste vídeo de 5 minutos, demonstramos o funcionamento do sistema de visão com
 ```
 farm-tech-solutions-v6/
 ├── data/
+│   ├── dataset.yaml (configuração do dataset)
 │   ├── train/
 │   │   ├── images/ (64 imagens)
 │   │   └── labels/ (64 arquivos de rótulos)
@@ -88,16 +89,27 @@ farm-tech-solutions-v6/
 │       └── labels/ (8 arquivos de rótulos)
 ├── notebooks/
 │   ├── GabrielRibeiro_rm560173_pbl_fase6.ipynb (notebook principal)
-│   └── analise_resultados.ipynb (análise detalhada)
+│   ├── GabrielRibeiro_rm560173_pbl_fase6.py (código Python exportado)
+│   └── yolov5s.pt (modelo pré-treinado)
 ├── scripts/
-│   ├── GabrielRibeiro_rm560173_pbl_fase6.py (script independente)
 │   ├── results_analysis.py (análise de resultados)
 │   └── run_analysis.sh (script para execução da análise)
 ├── results/
-│   └── comparison/ (resultados de treinamento e comparações)
+│   ├── analysis/ (diretório para análises gerais)
+│   └── comparison/ (resultados comparativos)
+│       ├── analysis_output/ (gráficos e visualizações)
+│       ├── analysis_summary.md (resumo da análise)
+│       ├── comparison_report.md (relatório comparativo)
+│       ├── train_e30_bs16_20250429_103607/ (resultados do treino com 30 épocas)
+│       ├── train_e60_bs16_20250429_105247/ (resultados do treino com 60 épocas)
+│       ├── val_best_20250429_112355/ (validação do modelo de 30 épocas)
+│       └── val_best_20250429_112434/ (validação do modelo de 60 épocas)
 ├── .docs/
-│   └── tasks/ (tarefas do projeto)
-└── requirements.txt
+│   ├── tasks/ (tarefas do projeto)
+│   ├── context.md (contexto do projeto)
+│   ├── project.md (detalhes do projeto)
+│   └── barema.md (critérios de avaliação)
+└── requirements.txt (dependências do projeto)
 ```
 
 ---
