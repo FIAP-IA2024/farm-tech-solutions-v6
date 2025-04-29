@@ -27,4 +27,4 @@ Perform multiple training runs with different epoch settings to compare model pe
 
 ## Status
 
-- [ ] Completed
+- [x] Completed
