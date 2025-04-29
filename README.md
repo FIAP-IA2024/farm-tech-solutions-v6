@@ -25,26 +25,80 @@
 
 O projeto consiste em duas entregas principais:
 
-1. **Entrega 1 -**: WIP...
-2. **Entrega 2 -**: WIP...
+1. **Entrega 1 - Visão Computacional com YOLO**: Desenvolvimento de um sistema de visão computacional usando o modelo YOLO para detecção de objetos, com treinamento em diferentes quantidades de épocas e análise comparativa de resultados.
+2. **Entrega 2 - Comparação de Abordagens**: Implementação de abordagens alternativas (YOLO tradicional e CNN treinada do zero) para comparação de desempenho com a solução da Entrega 1.
 
 ---
 
-## 🛠 **Entrega 1 - Machine Learning**
+## 🛠 **Entrega 1 - Visão Computacional com YOLO**
 
-WIP...
+Nesta entrega, desenvolvemos um sistema de visão computacional utilizando YOLO para demonstrar seu potencial e acurácia na detecção de objetos. O projeto simula o trabalho da FarmTech Solutions, uma empresa que expandiu seus serviços de IA para além do agronegócio, incluindo visão computacional.
+
+### 📊 Dataset e Organização
+
+- Dataset organizado com imagens de dois objetos distintos (A e B)
+- Total de 80 imagens (40 de cada objeto)
+- Distribuição:
+  - 80% para treinamento (64 imagens: 32 de cada objeto)
+  - 10% para validação (8 imagens: 4 de cada objeto)
+  - 10% para teste (8 imagens: 4 de cada objeto)
+- Imagens rotuladas usando ferramentas específicas para visão computacional
+
+### 🧠 Treinamento do Modelo
+
+- Utilizamos o modelo YOLO para detecção de objetos
+- Realizamos treinamentos com diferentes configurações de épocas: 30 e 60
+- Comparamos os resultados de precisão, recall e mAP@0.5
+- Análise detalhada de overfitting e desempenho do modelo
+
+### 📈 Análise de Resultados
+
+Os resultados da análise comparativa entre os modelos treinados com 30 e 60 épocas mostraram:
+
+- O modelo com 30 épocas alcançou mAP@0.5 de 0,2105, superando o modelo de 60 épocas (0,1167) em 44,54%
+- Precisão: o modelo de 30 épocas (0,2841) superou o de 60 épocas (0,1039) em 63,43%
+- Recall: ambos os modelos obtiveram valores idênticos (0,2500)
+- O treinamento estendido até 60 épocas resultou em overfitting
+
+A análise completa está disponível no notebook Jupyter e no script Python dedicado à análise de resultados.
 
 ---
 
 ### 🎥 Demonstração no YouTube
 
-WIP...
+[Link para o vídeo demonstrativo do projeto](https://www.youtube.com/watch?v=seu-video-id)
+
+Neste vídeo de 5 minutos, demonstramos o funcionamento do sistema de visão computacional com YOLO, incluindo o processo de treinamento, validação, teste e análise de resultados.
 
 ---
 
 ### 📁 Estrutura de Pastas
 
-WIP...
+```
+farm-tech-solutions-v6/
+├── data/
+│   ├── train/
+│   │   ├── images/ (64 imagens)
+│   │   └── labels/ (64 arquivos de rótulos)
+│   ├── val/
+│   │   ├── images/ (8 imagens)
+│   │   └── labels/ (8 arquivos de rótulos)
+│   └── test/
+│       ├── images/ (8 imagens)
+│       └── labels/ (8 arquivos de rótulos)
+├── notebooks/
+│   ├── GabrielRibeiro_rm560173_pbl_fase6.ipynb (notebook principal)
+│   └── analise_resultados.ipynb (análise detalhada)
+├── scripts/
+│   ├── GabrielRibeiro_rm560173_pbl_fase6.py (script independente)
+│   ├── results_analysis.py (análise de resultados)
+│   └── run_analysis.sh (script para execução da análise)
+├── results/
+│   └── comparison/ (resultados de treinamento e comparações)
+├── .docs/
+│   └── tasks/ (tarefas do projeto)
+└── requirements.txt
+```
 
 ---
 
@@ -83,11 +137,27 @@ WIP...
 
 #### Executar o Jupyter Lab
 
-WIP...
+Para executar o notebook Jupyter:
+
+```bash
+jupyter lab
+```
+
+Navegue até `notebooks/GabrielRibeiro_rm560173_pbl_fase6.ipynb` para visualizar a análise completa.
 
 #### Executar o Script Python
 
-WIP...
+Para treinar o modelo YOLO:
+
+```bash
+python scripts/GabrielRibeiro_rm560173_pbl_fase6.py --epochs 30 --batch-size 16
+```
+
+Para executar a análise de resultados:
+
+```bash
+bash scripts/run_analysis.sh
+```
 
 ---
 
@@ -97,16 +167,36 @@ WIP...
   - Python 3.x
 
 - **Bibliotecas e Frameworks:**
-  - WIP...
+  - PyTorch (framework para aprendizado de máquina)
+  - YOLOv5 (detecção de objetos)
+  - NumPy (computação numérica)
+  - Pandas (análise de dados)
+  - Matplotlib e Seaborn (visualização)
+  - Jupyter (desenvolvimento interativo)
   
 - **Ferramentas:**
-  - WIP...
+  - Git e GitHub (controle de versão)
+  - Make Sense IA (rotulação de imagens)
+  - Google Colab (ambiente de execução na nuvem)
 
 ---
 
-## **Entrega 2 -**
+## **Entrega 2 - Comparação de Abordagens**
 
-WIP
+Na segunda entrega, comparamos diferentes abordagens para visão computacional:
+
+1. **YOLO Customizado** (da Entrega 1)
+2. **YOLO Tradicional**
+3. **CNN Treinada do Zero**
+
+A análise comparativa considera:
+
+- Facilidade de uso e integração
+- Precisão dos modelos
+- Tempo de treinamento
+- Velocidade de inferência
+
+O notebook completo com a implementação e avaliação crítica está em desenvolvimento.
 
 ---
 
