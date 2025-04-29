@@ -62,6 +62,8 @@ Os resultados da análise comparativa entre os modelos treinados com 30 e 60 ép
 
 A análise completa está disponível no notebook Jupyter e no script Python dedicado à análise de resultados.
 
+Para uma análise detalhada e recomendações técnicas, consulte o [Relatório de Análise Completo](results/comparison/analysis_summary.md). Este documento apresenta uma comparação aprofundada dos modelos, incluindo métricas de desempenho, visualizações das curvas de aprendizado, matrizes de confusão e recomendações específicas para melhorar o treinamento em trabalhos futuros.
+
 ---
 
 ### 🎥 Demonstração no YouTube
