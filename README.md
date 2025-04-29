@@ -68,9 +68,9 @@ Para uma análise detalhada e recomendações técnicas, consulte o [Relatório 
 
 ### 🎥 Demonstração no YouTube
 
-[Link para o vídeo demonstrativo do projeto](https://www.youtube.com/watch?v=seu-video-id)
+[Link para o vídeo demonstrativo do projeto](https://youtu.be/NmzBoj4OdX4)
 
-Neste vídeo de 5 minutos, demonstramos o funcionamento do sistema de visão computacional com YOLO, incluindo o processo de treinamento, validação, teste e análise de resultados.
+Neste vídeo, demonstramos o funcionamento do sistema de visão computacional com YOLO, incluindo o processo de treinamento, validação, teste e análise de resultados.
 
 ---
 
