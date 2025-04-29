@@ -149,16 +149,6 @@ farm-tech-solutions-v6/
    pip install -r requirements.txt
    ```
 
-#### Executar o Jupyter Lab
-
-Para executar o notebook Jupyter:
-
-```bash
-jupyter lab
-```
-
-Navegue até `notebooks/GabrielRibeiro_rm560173_pbl_fase6.ipynb` para visualizar a análise completa.
-
 #### Executar o Script Python
 
 Para treinar o modelo YOLO:
@@ -172,6 +162,16 @@ Para executar a análise de resultados:
 ```bash
 bash scripts/run_analysis.sh
 ```
+
+#### Executar o Jupyter Lab
+
+Para executar o notebook Jupyter:
+
+```bash
+jupyter lab
+```
+
+Navegue até `notebooks/GabrielRibeiro_rm560173_pbl_fase6.ipynb` para visualizar a análise completa.
 
 ---
 
