@@ -30,4 +30,4 @@ Train the YOLO model using the prepared dataset to create a computer vision syst
 
 ## Status
 
-- [ ] Completed
+- [x] Completed
