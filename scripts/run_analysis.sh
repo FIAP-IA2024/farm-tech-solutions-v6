@@ -1,55 +1,55 @@
 #!/bin/bash
-# Script to run the results analysis and generate reports
-# UTF-8 encoded
+# Script para executar a análise de resultados e gerar relatórios
+# Codificado em UTF-8
 
 set -e
 
-# Define directories
+# Definir diretórios
 RESULTS_DIR="results/comparison"
 OUTPUT_DIR="${RESULTS_DIR}/analysis_output"
 REPORT_FILE="${RESULTS_DIR}/analysis_summary.md"
 
-# Model paths
+# Caminhos dos modelos
 MODEL_30_TRAIN="${RESULTS_DIR}/train_e30_bs16_20250429_103607"
 MODEL_60_TRAIN="${RESULTS_DIR}/train_e60_bs16_20250429_105247"
 MODEL_30_VAL="${RESULTS_DIR}/val_best_20250429_112355"
 MODEL_60_VAL="${RESULTS_DIR}/val_best_20250429_112434"
 
-# Create output directory if it doesn't exist
+# Criar diretório de saída se não existir
 mkdir -p "$OUTPUT_DIR"
 
-echo "Starting YOLO model training results analysis..."
+echo "Iniciando análise de resultados de treinamento de modelos YOLO..."
 
-# Run the analysis script
+# Executar o script de análise
 python scripts/results_analysis.py \
   --model1_train "$MODEL_30_TRAIN" \
   --model2_train "$MODEL_60_TRAIN" \
   --model1_val "$MODEL_30_VAL" \
   --model2_val "$MODEL_60_VAL" \
   --save_dir "$OUTPUT_DIR" \
-  --model1_name "30 Epochs" \
-  --model2_name "60 Epochs"
+  --model1_name "30 Épocas" \
+  --model2_name "60 Épocas"
 
-# Check if analysis was successful
+# Verificar se a análise foi bem-sucedida
 if [ $? -eq 0 ]; then
-  echo "Analysis completed successfully."
-  echo "Results saved to $OUTPUT_DIR"
-  echo "Analysis report available at $REPORT_FILE"
+  echo "Análise concluída com sucesso."
+  echo "Resultados salvos em $OUTPUT_DIR"
+  echo "Relatório de análise disponível em $REPORT_FILE"
   
-  # Open the analysis summary if on macOS
+  # Abrir o resumo da análise se estiver no macOS
   if [[ "$OSTYPE" == "darwin"* ]]; then
     open "$REPORT_FILE"
-  # Open with xdg-open on Linux
+  # Abrir com xdg-open no Linux
   elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     xdg-open "$REPORT_FILE"
   fi
 else
-  echo "Analysis failed with error code $?"
+  echo "A análise falhou com código de erro $?"
   exit 1
 fi
 
-# Print summary of generated visualizations
-echo -e "\nGenerated visualizations:"
+# Imprimir resumo das visualizações geradas
+echo -e "\nVisualizações geradas:"
 find "$OUTPUT_DIR" -name "*.png" | sort | while read -r file; do
   echo " - $(basename "$file")"
 done

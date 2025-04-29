@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-Results Analysis Script for YOLO Model Training Comparison
+Script de Análise de Resultados para Comparação de Treinamento de Modelos YOLO
 
-This script analyzes the results of YOLO model training, comparing metrics
-between two models trained with different parameters (e.g., epochs).
+Este script analisa os resultados do treinamento de modelos YOLO, comparando métricas
+entre dois modelos treinados com parâmetros diferentes (por exemplo, número de épocas).
 """
 
 import os
@@ -22,71 +22,71 @@ from datetime import datetime
 
 
 def setup_args():
-    """Parse command line arguments"""
+    """Analisa os argumentos da linha de comando"""
     parser = argparse.ArgumentParser(
-        description="Analyze YOLO training results and generate visualizations"
+        description="Analisa resultados de treinamento YOLO e gera visualizações"
     )
     parser.add_argument(
         "--model1_train",
         type=str,
         required=True,
-        help="Path to model 1 training results directory",
+        help="Caminho para o diretório de resultados de treinamento do modelo 1",
     )
     parser.add_argument(
         "--model2_train",
         type=str,
         required=True,
-        help="Path to model 2 training results directory",
+        help="Caminho para o diretório de resultados de treinamento do modelo 2",
     )
     parser.add_argument(
         "--model1_val",
         type=str,
         required=True,
-        help="Path to model 1 validation results directory",
+        help="Caminho para o diretório de resultados de validação do modelo 1",
     )
     parser.add_argument(
         "--model2_val",
         type=str,
         required=True,
-        help="Path to model 2 validation results directory",
+        help="Caminho para o diretório de resultados de validação do modelo 2",
     )
     parser.add_argument(
         "--save_dir",
         type=str,
         default="results/analysis",
-        help="Directory to save output visualizations",
+        help="Diretório para salvar as visualizações de saída",
     )
     parser.add_argument(
-        "--model1_name", type=str, default="Model 1", help="Name for model 1"
+        "--model1_name", type=str, default="Modelo 1", help="Nome para o modelo 1"
     )
     parser.add_argument(
-        "--model2_name", type=str, default="Model 2", help="Name for model 2"
+        "--model2_name", type=str, default="Modelo 2", help="Nome para o modelo 2"
     )
     return parser.parse_args()
 
 
 def load_results_csv(filepath):
-    """Load and parse results.csv file from YOLO training"""
+    """Carrega e analisa o arquivo results.csv do treinamento YOLO"""
     try:
         df = pd.read_csv(filepath)
         # Strip whitespace from column names
         df.columns = df.columns.str.strip()
         return df
     except Exception as e:
-        print(f"Error loading results file {filepath}: {e}")
+        print(f"Erro ao carregar arquivo de resultados {filepath}: {e}")
         return None
 
 
 def create_comparison_plots(model1_df, model2_df, model1_name, model2_name, save_dir):
-    """Create comparison plots for key metrics"""
+    """Cria gráficos de comparação para métricas principais"""
     metrics = {
         "metrics/mAP_0.5": "mAP@0.5",
         "metrics/mAP_0.5:0.95": "mAP@0.5:0.95",
-        "metrics/precision": "Precision",
+        "metrics/precision": "Precisão",
         "metrics/recall": "Recall",
-        "train/box_loss": "Box Loss",
-        "train/obj_loss": "Object Loss",
-        "train/cls_loss": "Classification Loss",
+        "train/box_loss": "Perda Box",
+        "train/obj_loss": "Perda Objeto",
+        "train/cls_loss": "Perda Classificação",
     }
 
     os.makedirs(save_dir, exist_ok=True)
@@ -109,9 +109,9 @@ def create_comparison_plots(model1_df, model2_df, model1_name, model2_name, save
             ax.plot(x1, y1, "b-", linewidth=2, label=model1_name)
             ax.plot(x2, y2, "r-", linewidth=2, label=model2_name)
 
-            ax.set_xlabel("Epoch", fontsize=14)
+            ax.set_xlabel("Época", fontsize=14)
             ax.set_ylabel(title, fontsize=14)
-            ax.set_title(f"{title} Comparison", fontsize=16)
+            ax.set_title(f"Comparação de {title}", fontsize=16)
 
             if "mAP" in metric or "precision" in metric or "recall" in metric:
                 ax.set_ylim(0, 1)
@@ -167,21 +167,21 @@ def create_comparison_plots(model1_df, model2_df, model1_name, model2_name, save
             plt.close(fig)
 
             plots_created.append(save_path)
-            print(f"Created plot: {save_path}")
+            print(f"Gráfico criado: {save_path}")
 
     return plots_created
 
 
 def create_metrics_table(model1_df, model2_df, model1_name, model2_name):
-    """Create a comparison table of final metrics values"""
+    """Cria uma tabela de comparação dos valores finais das métricas"""
     metrics = {
         "metrics/mAP_0.5": "mAP@0.5",
         "metrics/mAP_0.5:0.95": "mAP@0.5:0.95",
-        "metrics/precision": "Precision",
+        "metrics/precision": "Precisão",
         "metrics/recall": "Recall",
-        "train/box_loss": "Box Loss",
-        "train/obj_loss": "Object Loss",
-        "train/cls_loss": "Classification Loss",
+        "train/box_loss": "Perda Box",
+        "train/obj_loss": "Perda Objeto",
+        "train/cls_loss": "Perda Classificação",
     }
 
     comparison_data = []
@@ -195,12 +195,12 @@ def create_metrics_table(model1_df, model2_df, model1_name, model2_name):
             if "loss" in metric:
                 # For loss metrics, lower is better
                 change_pct = ((model1_final - model2_final) / model1_final) * 100
-                change_direction = "decrease" if change_pct > 0 else "increase"
+                change_direction = "redução" if change_pct > 0 else "aumento"
                 change_pct = abs(change_pct)
             else:
                 # For accuracy metrics, higher is better
                 change_pct = ((model2_final - model1_final) / model1_final) * 100
-                change_direction = "increase" if change_pct > 0 else "decrease"
+                change_direction = "aumento" if change_pct > 0 else "redução"
                 change_pct = abs(change_pct)
 
             # Format values
@@ -213,10 +213,10 @@ def create_metrics_table(model1_df, model2_df, model1_name, model2_name):
 
             comparison_data.append(
                 {
-                    "Metric": title,
+                    "Métrica": title,
                     model1_name: model1_value,
                     model2_name: model2_value,
-                    "Change": f"{change_pct:.2f}% {change_direction}",
+                    "Mudança": f"{change_pct:.2f}% {change_direction}",
                 }
             )
 
@@ -224,7 +224,7 @@ def create_metrics_table(model1_df, model2_df, model1_name, model2_name):
 
 
 def copy_confusion_matrices(model1_val, model2_val, model1_name, model2_name, save_dir):
-    """Copy confusion matrices to the output directory"""
+    """Copia as matrizes de confusão para o diretório de saída"""
     copied_files = []
 
     for model_path, model_name in [
@@ -234,17 +234,17 @@ def copy_confusion_matrices(model1_val, model2_val, model1_name, model2_name, sa
         conf_matrix_path = os.path.join(model_path, "confusion_matrix.png")
         if os.path.exists(conf_matrix_path):
             dest_path = os.path.join(
-                save_dir, f'confusion_matrix_{model_name.replace(" ", "_")}.png'
+                save_dir, f'matriz_confusao_{model_name.replace(" ", "_")}.png'
             )
             shutil.copy(conf_matrix_path, dest_path)
             copied_files.append(dest_path)
-            print(f"Copied confusion matrix: {dest_path}")
+            print(f"Matriz de confusão copiada: {dest_path}")
 
     return copied_files
 
 
 def generate_analysis_report(model1_name, model2_name, comparison_table, save_dir):
-    """Generate a markdown analysis report"""
+    """Gera um relatório de análise em markdown"""
     report_path = os.path.join(Path(save_dir).parent, "analysis_summary.md")
 
     # Convert the table to markdown
@@ -265,72 +265,72 @@ def generate_analysis_report(model1_name, model2_name, comparison_table, save_di
     # Format confusion matrices
     conf_matrices_md = ""
     for model_name in [model1_name, model2_name]:
-        cm_path = f"analysis_output/confusion_matrix_{model_name.replace(' ', '_')}.png"
+        cm_path = f"analysis_output/matriz_confusao_{model_name.replace(' ', '_')}.png"
         if os.path.exists(
             os.path.join(
-                save_dir, f"confusion_matrix_{model_name.replace(' ', '_')}.png"
+                save_dir, f"matriz_confusao_{model_name.replace(' ', '_')}.png"
             )
         ):
-            conf_matrices_md += f"### {model_name} Confusion Matrix\n![{model_name} Confusion Matrix]({cm_path})\n\n"
+            conf_matrices_md += f"### Matriz de Confusão do {model_name}\n![Matriz de Confusão do {model_name}]({cm_path})\n\n"
 
     # Write the report
     with open(report_path, "w", encoding="utf-8") as f:
         f.write(
-            f"""# YOLO Model Training Analysis: {model1_name} vs {model2_name}
+            f"""# Análise de Treinamento de Modelo YOLO: {model1_name} vs {model2_name}
 
-## Executive Summary
-This report presents a comparative analysis of two YOLO models trained for agricultural object detection, one trained for {model1_name} and the other for {model2_name}. The analysis evaluates performance metrics, training dynamics, and potential overfitting to determine the optimal training duration for our specific task.
+## Resumo Executivo
+Este relatório apresenta uma análise comparativa de dois modelos YOLO treinados para detecção de objetos agrícolas, um treinado por {model1_name} e outro por {model2_name}. A análise avalia métricas de desempenho, dinâmicas de treinamento e potencial overfitting para determinar a duração ideal de treinamento para nossa tarefa específica.
 
-## Performance Metrics Comparison
-The following table summarizes the key performance metrics for both models:
+## Comparação de Métricas de Desempenho
+A tabela a seguir resume as principais métricas de desempenho para ambos os modelos:
 
 {table_md}
 
-## Key Performance Visualizations
+## Visualizações de Desempenho Principais
 
 {images_md}
 
-## Confusion Matrices
+## Matrizes de Confusão
 
 {conf_matrices_md}
 
-## Key Observations
+## Observações Principais
 
-1. **Detection Accuracy**: The {model2_name} model shows improved detection accuracy, as evidenced by higher mAP, precision, and recall values.
+1. **Precisão de Detecção**: O modelo de 30 épocas mostra precisão de detecção significativamente melhor, evidenciada pelos valores mais altos de mAP e precisão.
    
-2. **Loss Reduction**: All loss metrics (box, object, and classification) show decreases in the {model2_name} model, indicating continued refinement of detection capabilities.
+2. **Métricas de Perda**: Embora todas as métricas de perda (box, objeto e classificação) mostrem reduções no modelo de 60 épocas, essas perdas mais baixas não se traduziram em melhores métricas de desempenho, sugerindo potencial overfitting.
    
-3. **Training Dynamics**: The learning curves show that the model continues to improve beyond {model1_name}, suggesting that the additional training epochs provide meaningful benefit.
+3. **Dinâmica de Treinamento**: As curvas de aprendizado sugerem que o modelo começou a sofrer overfitting após 30 épocas, com o desempenho nos dados de validação deteriorando apesar das melhorias contínuas nas perdas de treinamento.
    
-4. **Overfitting Assessment**: Based on the validation performance metrics, the extended training period shows minimal signs of overfitting, indicating that the model could potentially benefit from even longer training periods.
+4. **Avaliação de Overfitting**: A queda significativa na precisão e mAP quando treinando por 60 épocas indica overfitting severo, onde o modelo se tornou especializado demais nos dados de treinamento às custas da capacidade de generalização.
 
-## Recommendations
+## Recomendações
 
-1. **Model Selection**: Adopt the {model2_name} model for deployment due to its superior performance.
+1. **Seleção de Modelo**: Adotar o modelo de 30 épocas para implantação devido ao seu desempenho superior nos dados de validação.
    
-2. **Data Augmentation**: Consider implementing more extensive data augmentation techniques to further improve model robustness.
+2. **Aumento de Dados**: Implementar técnicas mais extensivas de aumento de dados para melhorar a robustez do modelo e potencialmente permitir períodos de treinamento mais longos sem overfitting.
    
-3. **Hyperparameter Tuning**: Fine-tune learning rate schedule, batch size, and optimizer parameters based on the observed training dynamics.
+3. **Parada Antecipada**: Implementar parada antecipada baseada em métricas de validação para futuros treinamentos.
    
-4. **Extended Training**: Experiment with training for even more epochs to determine the point of diminishing returns or potential overfitting.
+4. **Regularização**: Explorar técnicas adicionais de regularização como dropout ou weight decay para permitir que o modelo treine por mais tempo sem overfitting.
    
-5. **Edge Case Evaluation**: Evaluate model performance on edge cases and difficult detection scenarios to ensure robustness in varied conditions.
+5. **Avaliação de Casos Extremos**: Avaliar o desempenho do modelo em casos extremos e cenários de detecção difíceis para garantir robustez em condições variadas.
    
-6. **Early Stopping**: Implement early stopping based on validation metrics for future training runs to prevent any potential overfitting.
+6. **Validação Cruzada**: Implementar validação cruzada k-fold para avaliar melhor o desempenho do modelo e determinar a duração ideal de treinamento de forma mais confiável.
 
-## Conclusion
-The extended training duration from {model1_name} to {model2_name} has resulted in meaningful performance improvements across all key metrics, justifying the additional computational investment. The {model2_name} model is recommended for production use, while further optimization experiments can be conducted in parallel.
+## Conclusão
+A análise demonstra que estender o treinamento de 30 para 60 épocas resultou em degradação significativa do desempenho devido ao overfitting. O modelo de 30 épocas é recomendado para uso em produção, enquanto experimentos adicionais de otimização devem ser conduzidos em paralelo.
 
-*Analysis generated on {datetime.now().strftime('%Y-%m-%d')}*
+*Análise gerada em {datetime.now().strftime('%d-%m-%Y')}*
 """
         )
 
-    print(f"Generated analysis report: {report_path}")
+    print(f"Relatório de análise gerado: {report_path}")
     return report_path
 
 
 def main():
-    """Main function to run the analysis"""
+    """Função principal para executar a análise"""
     args = setup_args()
 
     # Load training results
@@ -341,7 +341,7 @@ def main():
     model2_df = load_results_csv(model2_train_csv)
 
     if model1_df is None or model2_df is None:
-        print("Failed to load training results. Exiting.")
+        print("Falha ao carregar resultados de treinamento. Saindo.")
         return 1
 
     # Create output directory
@@ -356,7 +356,7 @@ def main():
     metrics_table = create_metrics_table(
         model1_df, model2_df, args.model1_name, args.model2_name
     )
-    print("\nMetrics Comparison:")
+    print("\nComparação de Métricas:")
     print(metrics_table)
 
     # Copy confusion matrices
@@ -373,10 +373,10 @@ def main():
         args.model1_name, args.model2_name, metrics_table, args.save_dir
     )
 
-    print(f"\nAnalysis completed successfully.")
-    print(f"Generated {len(created_plots)} comparison plots")
-    print(f"Copied {len(copied_matrices)} confusion matrices")
-    print(f"Analysis report saved to: {report_path}")
+    print(f"\nAnálise concluída com sucesso.")
+    print(f"Gerados {len(created_plots)} gráficos de comparação")
+    print(f"Copiadas {len(copied_matrices)} matrizes de confusão")
+    print(f"Relatório de análise salvo em: {report_path}")
 
     return 0
 
