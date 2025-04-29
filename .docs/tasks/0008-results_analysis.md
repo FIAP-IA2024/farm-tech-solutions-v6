@@ -29,4 +29,4 @@ Analyze and compare the results from different training configurations to evalua
 
 ## Status
 
-- [ ] Completed
+- [x] Completed
