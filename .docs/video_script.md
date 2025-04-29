@@ -12,20 +12,19 @@
 **Mostrar na tela:**
 
 - Tela inicial mostrando a página do GitHub do projeto
-- `/Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/README.md`
+- `farm-tech-solutions-v6/README.md`
 
 ---
 
 ## 1. Contextualização do Projeto (30 segundos)
 
 **Fala:**
-"A FarmTech Solutions é uma empresa que expandiu seus serviços de IA para além do agronegócio. Neste contexto, desenvolvemos um sistema de visão computacional utilizando o modelo YOLO para detectar dois objetos distintos: gatos e cachorros. Nossa solução demonstra o potencial e a acurácia desta tecnologia através de treinamentos com diferentes configurações."
+"Neste projeto, desenvolvemos um sistema de visão computacional utilizando o modelo YOLO para detectar dois objetos distintos: gatos e cachorros. Nossa solução demonstra o potencial e a acurácia desta tecnologia através de treinamentos com diferentes configurações."
 
 **Mostrar na tela:**
 
-- Arquivo de contextualização do projeto
-- `/Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/.docs/project.md`
-- Destacar a seção "Entrega 1"
+- Seção "Entregas do Projeto" do README
+- Destacar as informações sobre a Entrega 1
 
 ---
 
@@ -37,9 +36,9 @@
 **Mostrar na tela:**
 
 - Estrutura de pastas do dataset
-- `/Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/data`
+- `farm-tech-solutions-v6/data`
 - Arquivo de configuração do dataset
-- `/Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/data/dataset.yaml`
+- `farm-tech-solutions-v6/data/dataset.yaml`
 - Algumas imagens de exemplo de cada categoria com suas anotações
 
 ---
@@ -52,9 +51,9 @@
 **Mostrar na tela:**
 
 - Script Python principal
-- `/Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/notebooks/GabrielRibeiro_rm560173_pbl_fase6.py`
+- `farm-tech-solutions-v6/notebooks/GabrielRibeiro_rm560173_pbl_fase6.py`
 - Notebook Jupyter
-- `/Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/notebooks/GabrielRibeiro_rm560173_pbl_fase6.ipynb`
+- `farm-tech-solutions-v6/notebooks/GabrielRibeiro_rm560173_pbl_fase6.ipynb`
 - Comando de execução do script
 - `python scripts/GabrielRibeiro_rm560173_pbl_fase6.py --epochs 30 --batch-size 16`
 
@@ -67,10 +66,10 @@
 
 **Mostrar na tela:**
 
-- Arquivo de análise de resultados
-- `/Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/results/comparison/analysis_summary.md`
+- Resultados da análise comparativa
+- `farm-tech-solutions-v6/results/comparison/analysis_summary.md`
 - Gráficos de comparação de métricas
-- `/Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/results/comparison/analysis_output/` (gráficos relevantes)
+- `farm-tech-solutions-v6/results/comparison/analysis_output/` (gráficos relevantes)
 - Matrizes de confusão dos dois modelos
 
 ---
@@ -84,7 +83,7 @@
 
 - Execução do script de teste
 - Exemplos de imagens processadas pelo modelo
-- `/Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/results/comparison/val_best_20250429_112355/` (resultados de validação)
+- `farm-tech-solutions-v6/results/comparison/val_best_20250429_112355/` (resultados de validação)
 
 ---
 
@@ -95,8 +94,8 @@
 
 **Mostrar na tela:**
 
-- Seção de recomendações do relatório de análise
-- `/Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/results/comparison/analysis_summary.md`
+- Recomendações baseadas na análise de resultados
+- Seção de conclusões do relatório
 
 ---
 
@@ -108,5 +107,5 @@
 **Mostrar na tela:**
 
 - Página do GitHub do projeto
-- `/Users/gabrielribeiro/www/fiap/farm-tech-solutions-v6/README.md`
+- `farm-tech-solutions-v6/README.md`
 - Destaque para as tecnologias utilizadas
