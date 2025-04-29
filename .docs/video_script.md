@@ -9,13 +9,10 @@
 **Fala:**
 "Olá! Neste vídeo vou demonstrar o projeto da Fase 6 do curso de IA da FIAP. Este projeto consiste na implementação de um sistema de visão computacional utilizando o modelo YOLO para detecção de objetos."
 
-**Mostrar na tela:**
-
-- Tela inicial mostrando a página do GitHub do projeto
-- `farm-tech-solutions-v6/README.md`
+**Mostrar na tela:** Tela inicial mostrando a página do GitHub do projeto (`farm-tech-solutions-v6/README.md`)
 
 **Fala:**
-Aqui está o repositório do projeto. No arquivo README.md, contém todas as instruções necessárias para executar o projeto e obter os resultados. As boas práticas de versionamento com Git foram seguidas, e todo o processo está devidamente commitado.
+"Aqui está o repositório do projeto. No arquivo README.md, contém todas as instruções necessárias para executar o projeto e obter os resultados. As boas práticas de versionamento com Git foram seguidas, e todo o processo está devidamente commitado."
 
 ---
 
