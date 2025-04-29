@@ -52,4 +52,4 @@ Based on our comprehensive analysis, we recommend the following actions:
 
 ## Conclusion
 
-The extended training duration from 30 to 60 epochs resulted in meaningful performance improvements for our agricultural object detection model. The analysis confirms that the additional computational investment was justified by the performance gains achieved. The 60-epoch model should be deployed for production use, while further optimization experiments are conducted in parallel to potentially achieve even better results. 
+The extended training duration from 30 to 60 epochs resulted in meaningful performance improvements for our agricultural object detection model. The analysis confirms that the additional computational investment was justified by the performance gains achieved. The 60-epoch model should be deployed for production use, while further optimization experiments are conducted in parallel to potentially achieve even better results.

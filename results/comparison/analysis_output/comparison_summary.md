@@ -41,4 +41,3 @@
 ### Validation Object Loss
 
 ![Validation Object Loss](val_obj_loss_comparison.png)
-

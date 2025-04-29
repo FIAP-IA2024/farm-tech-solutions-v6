@@ -56,4 +56,4 @@ Based on our analysis, we recommend:
    - Testing different model architectures (e.g., YOLOv5m, YOLOv5l)
 3. **Experiment with higher epoch counts** to determine the optimal training duration for this specific dataset, as there are minimal signs of overfitting even at 60 epochs.
 
-The results clearly demonstrate that for this agricultural object detection task, the additional training time yields worthwhile performance improvements. 
+The results clearly demonstrate that for this agricultural object detection task, the additional training time yields worthwhile performance improvements.

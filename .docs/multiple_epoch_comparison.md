@@ -37,11 +37,13 @@ Ambos os modelos foram treinados com a mesma configuração base, exceto pelo n�
 
 ### Comparação por Classe
 
-#### Classe A_Cat:
+#### Classe A_Cat
+
 - **Modelo 30 épocas**: mAP@0.5 = 0.0456, mAP@0.5-0.95 = 0.0136
 - **Modelo 60 épocas**: mAP@0.5 = 0.0621, mAP@0.5-0.95 = 0.0117
 
-#### Classe B_Dog:
+#### Classe B_Dog
+
 - **Modelo 30 épocas**: mAP@0.5 = 0.363, mAP@0.5-0.95 = 0.0587
 - **Modelo 60 épocas**: mAP@0.5 = 0.536, mAP@0.5-0.95 = 0.109
 
@@ -74,4 +76,4 @@ Ambos os modelos foram treinados com a mesma configuração base, exceto pelo n�
    - Técnicas de data augmentation para melhorar a detecção da classe A_Cat
    - Experimentar modelos YOLOv5 maiores (como YOLOv5m ou YOLOv5l) para classes difíceis de detectar
 
-3. **Balanceamento de Classes**: Investigar por que a classe A_Cat tem desempenho inferior e considerar medidas para equilibrar o treinamento. 
+3. **Balanceamento de Classes**: Investigar por que a classe A_Cat tem desempenho inferior e considerar medidas para equilibrar o treinamento.

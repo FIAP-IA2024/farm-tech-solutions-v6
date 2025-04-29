@@ -48,7 +48,8 @@ O treinamento foi concluído com sucesso, gerando diversos arquivos de resultado
 - **Visualizações**: Batches de treinamento e validação
 
 Os resultados completos podem ser encontrados no diretório:
-```
+
+```plaintext
 results/train_e1_bs16_20250419_185121/
 ```
 
@@ -61,7 +62,8 @@ python val.py --img 640 --batch 16 --data /path/to/dataset.yaml --weights /path/
 ```
 
 Os resultados da validação estão disponíveis em:
-```
+
+```plaintext
 results/val_best_20250419_185253/
 ```
 
@@ -74,7 +76,8 @@ python detect.py --img 640 --source /path/to/test/images --weights /path/to/best
 ```
 
 Os resultados dos testes estão disponíveis em:
-```
+
+```plaintext
 results/test_best_20250419_185337/
 ```
 
@@ -85,4 +88,4 @@ Para melhorar o modelo, poderiam ser realizados os seguintes ajustes:
 1. Treinar com um número maior de épocas para avaliar se há melhorias significativas
 2. Experimentar diferentes tamanhos de modelos YOLOv5 (s, m, l, x)
 3. Aplicar técnicas de data augmentation para melhorar a generalização
-4. Ajustar hiperparâmetros como learning rate e batch size 
+4. Ajustar hiperparâmetros como learning rate e batch size
